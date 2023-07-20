@@ -6,7 +6,9 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
+      {/* Renderuj główny komponent aplikacji */}
       <Component {...pageProps} />
+      {/* Dodaj komponent Analytics */}
       <Analytics />
     </SessionProvider>
   );
