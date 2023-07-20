@@ -7,13 +7,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Check if user is logged in
+  // Sprawdź, czy użytkownik jest zalogowany
   const session = await getServerSession(req, res, authOptions);
   if (!session || !session.user) {
     return res.status(500).json("Login to upload.");
   }
 
-  // Query the redis database by email to get the number of generations left
+  // Zapytaj bazę danych Redis na podstawie adresu email, aby uzyskać liczbę pozostałych generacji
   const identifier = session.user.email;
   const windowDuration = 24 * 60 * 60 * 1000;
   const bucket = Math.floor(Date.now() / windowDuration);
@@ -21,9 +21,9 @@ export default async function handler(
   const usedGenerations =
     (await redis?.get(`@upstash/ratelimit:${identifier!}:${bucket}`)) || 0;
 
-  // it can return null and it also returns the number of generations the user has done, not the number they have left
+  // Może zwrócić wartość null i zwraca liczbę wykonanych przez użytkownika generacji, a nie liczbę pozostałych generacji
 
-  // TODO: Move this using date-fns on the client-side
+  // TODO: Przenieś to na stronę klienta przy użyciu date-fns
   const resetDate = new Date();
   resetDate.setHours(19, 0, 0, 0);
   const diff = Math.abs(resetDate.getTime() - new Date().getTime());
