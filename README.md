@@ -22,21 +22,6 @@ Aby uruchomić projekt, wykonaj następujące kroki:
 
 ## Struktura projektu
 
-projekt/
-├── components/
-├── lib/
-├── pages/
-├── prisma/
-├── public/
-├── styles/
-├── utils/
-├── .env
-├── .gitignore
-├── next.config.js
-├── package-lock.json
-├── package.json
-└── postcss.config.js
-
 - `components/` - komponenty React używane w projekcie
 - `lib/` - pliki bibliotek
 - `pages/` - pliki Next.js zawierające strony
