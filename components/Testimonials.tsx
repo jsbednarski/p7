@@ -5,7 +5,7 @@ const testimonials = [
     {
       content:
         "Niesamowite doświadczenie! Bardzo szybka aplikacja!",
-      link: "https://twitter.com/rauchg/status/1612233034622984192",
+      link: "",
       author: {
         name: "Gerhard Maier",
         role: "CEO w DENTKing",
@@ -15,7 +15,7 @@ const testimonials = [
     {
       content:
         "Wspaniałe narzędzie! Polecam serdecznie wszystkim.",
-      link: "https://twitter.com/cramforce/status/1612496954218672128",
+      link: "",
       author: {
         name: "Marek Nowak",
         role: "CTO w Przychodni",
@@ -27,7 +27,7 @@ const testimonials = [
     {
       content:
         "Jestem pod wrażeniem strony internetowej! Doskonały projekt i funkcjonalność. Świetna robota!",
-      link: "https://twitter.com/phar_whaz/status/1612498030627852309",
+      link: "",
       author: {
         name: "Katarzyna Wiśniewska",
         role: "Dentysta",
@@ -37,7 +37,7 @@ const testimonials = [
     {
       content:
         "Przekształca rozmazane zdjęcia w perfekcyjnie ostre. Cudowne!",
-      link: "https://twitter.com/sergvind/status/1612610058369515521",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Jan Kowalski",
         role: "Specjalista ortodoncji",
@@ -49,7 +49,7 @@ const testimonials = [
     {
       content:
         "Niesamowite! Będę wracać! Świetna robota!",
-      link: "https://twitter.com/Himanil_Gole/status/1612510385504157697",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Monika Jankowska",
         role: "Projektant stomatologiczny i założyciel",
@@ -59,7 +59,7 @@ const testimonials = [
     {
       content:
         "Dziękuję! Uwielbiam to! Naprawdę poprawiło jakość mojego zdjęcia!",
-      link: "https://twitter.com/rod_ellison/status/1612513333302775809",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Adam Nowicki",
         role: "Dentysta",
