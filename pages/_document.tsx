@@ -1,43 +1,96 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SquigglyLines from "../components/SquigglyLines";
+import { Testimonials } from "../components/Testimonials";
 
-class MyDocument extends Document {
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="description"
-            content="Popraw jakość swoich zdjęć za darmo"
-          />
-          <meta property="og:site_name" content="Pixelperfect" />
-          <meta
-            property="og:description"
-            content="Popraw jakość swoich zdjęć za darmo."
-          />
-          <meta property="og:title" content="Popraw jakość swoich zdjęć" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Popraw jakość swoich zdjęć" />
-          <meta
-            name="twitter:description"
-            content="Popraw jakość swoich zdjęć za darmo."
-          />
-          <meta
-            property="og:image"
-            content="https://restore-photos.vercel.app/og-image.png"
-          />
-          <meta
-            name="twitter:image"
-            content="https://restore-photos.vercel.app/og-image.png"
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
+const Home: NextPage = () => {
+  return (
+    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen" style={{ backgroundColor: "white" }}>
+      <Head>
+        <title>Fotomagia</title>
+      </Head>
+      <Header />
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-28 mt-20">
+        <a
+          href=""
+          target="_blank"
+          rel="noreferrer"
+          className="border rounded-2xl py-1 px-4 text-goldenrod-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out"
+        >
+          Uwielbiany przez <span className="font-semibold">wielu</span> zadowolonych użytkowników
+        </a>
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-black sm:text-7xl">
+          Poprawianie zdjęć{" "}
+          <span className="relative whitespace-nowrap text-white">
+            <SquigglyLines />
+            <span className="relative">za pomocą AI</span>
+          </span>{" "}
+          nawet dla pięknych osób.
+        </h1>
 
-export default MyDocument;
+        {/* Comment: Main description */}
+        <p className="mx-auto mt-12 max-w-xl text-lg text-black leading-7">
+          Masz stary, rozmazany zdjęcie? Pozwól naszej zaawansowanej sztucznej inteligencji podnieść jakość tych wspomnień i przywrócić im nowe życie.
+          Bez żadnych opłat - odzyskaj już dziś swoje zdjęcia sprzed lat.
+        </p>
+        
+        <div className="flex justify-center space-x-4">
+          {/* Comment: Learn more button */}
+          <a
+            className="bg-goldenrod rounded-xl text-black font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-goldenrod-600 border"
+            href="bednarski.ch"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Dowiedz się więcej
+          </a>
+
+          {/* Comment: Restore photos button */}
+          <Link
+            className="bg-goldenrod rounded-xl text-black font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-goldenrod-600"
+            href="/restore"
+          >
+            Napraw swoje zdjęcia
+          </Link>
+        </div>
+
+        <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
+          <div className="flex flex-col space-y-10 mt-4 mb-16">
+            <div className="flex sm:space-x-2 sm:flex-row flex-col">
+              <div>
+                {/* Comment: Original photo */}
+                <h2 className="mb-1 font-medium text-lg text-goldenrod-500">Oryginalne zdjęcie</h2>
+                <Image
+                  alt="Oryginalne zdjęcie mojego brata"
+                  src="/michael.jpg"
+                  className="w-96 h-96 rounded-2xl"
+                  width={400}
+                  height={400}
+                />
+              </div>
+              <div className="sm:mt-0 mt-8">
+                {/* Comment: Fixed photo */}
+                <h2 className="mb-1 font-medium text-lg text-goldenrod-500">Naprawione zdjęcie</h2>
+                <Image
+                  alt="Naprawione zdjęcie mojego brata"
+                  width={400}
+                  height={400}
+                  src="/michael-new.jpg"
+                  className="w-96 h-96 rounded-2xl sm:mt-0 mt-2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Testimonials />
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;
