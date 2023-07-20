@@ -21,9 +21,9 @@ const Home: NextPage = () => {
           rel="noreferrer"
           className="border rounded-2xl py-1 px-4 text-goldenrod-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out"
         >
-          Uwielbiany przez <span className="font-semibold">wielu</span> zadowolonych użytkowników
+          Uwielbiany przez <span className="font-semibold text-goldenrod-500">wielu</span> zadowolonych użytkowników
         </a>
-        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-black sm:text-7xl">
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-goldenrod-500 sm:text-7xl">
           Poprawianie zdjęć{" "}
           <span className="relative whitespace-nowrap text-white">
             <SquigglyLines />
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
         </h1>
 
         {/* Comment: Main description */}
-        <p className="mx-auto mt-12 max-w-xl text-lg text-black leading-7">
+        <p className="mx-auto mt-12 max-w-xl text-lg text-goldenrod-500 leading-7">
           Masz stary, rozmazany zdjęcie? Pozwól naszej zaawansowanej sztucznej inteligencji podnieść jakość tych wspomnień i przywrócić im nowe życie.
           Bez żadnych opłat - odzyskaj już dziś swoje zdjęcia sprzed lat.
         </p>
