@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           Uwielbiany przez <span className="font-semibold">wielu</span> zadowolonych użytkowników
         </a>
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
-          Poprawianie twarzy{" "}
+          Poprawianie zdjęć{" "}
           <span className="relative whitespace-nowrap text-[#3290EE]">
             <SquigglyLines />
             <span className="relative">za pomocą AI</span>
