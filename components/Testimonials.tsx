@@ -5,7 +5,7 @@ const testimonials = [
     {
       content:
         "Niesamowite doświadczenie! Bardzo szybka aplikacja!",
-      link: "",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Gerhard Maier",
         role: "CEO w DENTKing",
@@ -15,7 +15,7 @@ const testimonials = [
     {
       content:
         "Wspaniałe narzędzie! Polecam serdecznie wszystkim.",
-      link: "",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Marek Nowak",
         role: "CTO w Przychodni",
@@ -27,7 +27,7 @@ const testimonials = [
     {
       content:
         "Jestem pod wrażeniem strony internetowej! Doskonały projekt i funkcjonalność. Świetna robota!",
-      link: "",
+      link: "https://github.com/jsbednarski",
       author: {
         name: "Katarzyna Wiśniewska",
         role: "Dentysta",
