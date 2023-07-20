@@ -24,20 +24,20 @@ export default async function handler(
   req: ExtendedNextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  // Check if user is logged in
+  // Sprawdź, czy użytkownik jest zalogowany
   const session = await getServerSession(req, res, authOptions);
   if (!session || !session.user) {
     return res.status(500).json("Login to upload.");
   }
 
-  // Rate Limiting by user email
+  // Rate Limiting dla użytkownika na podstawie adresu email
   if (ratelimit) {
     const identifier = session.user.email;
     const result = await ratelimit.limit(identifier!);
     res.setHeader("X-RateLimit-Limit", result.limit);
     res.setHeader("X-RateLimit-Remaining", result.remaining);
 
-    // Calcualte the remaining time until generations are reset
+    // Oblicz pozostały czas do zresetowania limitu generacji
     const diff = Math.abs(
       new Date(result.reset).getTime() - new Date().getTime()
     );
@@ -54,7 +54,7 @@ export default async function handler(
   }
 
   const imageUrl = req.body.imageUrl;
-  // POST request to Replicate to start the image restoration generation process
+  // Wykonaj żądanie POST do Replicate, aby rozpocząć proces generacji odrestaurowanego zdjęcia
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
     headers: {
@@ -71,10 +71,10 @@ export default async function handler(
   let jsonStartResponse = await startResponse.json();
   let endpointUrl = jsonStartResponse.urls.get;
 
-  // GET request to get the status of the image restoration process & return the result when it's ready
+  // Wykonaj żądanie GET, aby sprawdzić status procesu odzyskiwania obrazu i zwróć wynik, gdy będzie gotowy
   let restoredImage: string | null = null;
   while (!restoredImage) {
-    // Loop in 1s intervals until the alt text is ready
+    // Pętla w odstępach co 1 sekundę, dopóki nie będzie gotowy odrestaurowany obraz
     console.log("polling for result...");
     let finalResponse = await fetch(endpointUrl, {
       method: "GET",
