@@ -8,12 +8,12 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Odtwórz swoje stare zdjęcia twarzy i zachowaj wspomnienia."
+            content="Popraw jakość swoich zdjęć za darmo"
           />
           <meta property="og:site_name" content="restorePhotos.io" />
           <meta
             property="og:description"
-            content="Odtwórz swoje stare zdjęcia twarzy i zachowaj wspomnienia."
+            content="Popraw jakość swoich zdjęć za darmo."
           />
           <meta property="og:title" content="Odtwórz zdjęcia twarzy" />
           <meta name="twitter:card" content="summary_large_image" />
