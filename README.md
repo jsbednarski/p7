@@ -1,4 +1,4 @@
-# Projekt poprawy zdjęć twarzy
+# Poprawianie zdjęć twarzy
 
 Projekt umożliwia poprawianie zdjęć twarzy przy użyciu technologii deep learning. Użytkownik może przesłać swoje zdjęcie, a następnie otrzymać odtworzoną wersję tego zdjęcia.
 
