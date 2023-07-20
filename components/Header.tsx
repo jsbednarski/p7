@@ -13,7 +13,7 @@ export default function Header({ photo }: { photo?: string | undefined }) {
           height={25}
         />
         <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
-          naprawiacztwarzy.io
+          PixelPerfect.ai
         </h1>
       </Link>
       {photo ? (
@@ -26,7 +26,7 @@ export default function Header({ photo }: { photo?: string | undefined }) {
         />
       ) : (
         <a
-          href="https://bednarski.ch"
+          href="https://jakubbednarski.ch"
           target="_blank"
           rel="noreferrer"
         >
