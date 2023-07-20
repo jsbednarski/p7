@@ -6,7 +6,7 @@ export default function Footer() {
       <div>
         Powered by{" "}
         <a
-          href="https://bednarski.ch/"
+          href="https://jakubbednarski.ch/"
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
@@ -42,9 +42,9 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/s/s"
+          href="https://github.com/jsbednarski"
           className="group"
-          aria-label="TaxPal on GitHub"
+          aria-label="GitHub"
         >
           <svg
             aria-hidden="true"
