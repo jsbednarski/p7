@@ -9,7 +9,7 @@ import { Testimonials } from "../components/Testimonials";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen" style={{ backgroundColor: "#FDF2E9" }}>
+    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen" style={{ backgroundColor: "white" }}>
       <Head>
         <title>Fotomagia</title>
       </Head>
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
           {/* Comment: Restore photos button */}
           <Link
-            className="bg-white rounded-xl text-goldenrod-500 font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-white/80"
+            className="bg-goldenrod-500 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-goldenrod-600"
             href="/restore"
           >
             Napraw swoje zdjęcia
