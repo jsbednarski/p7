@@ -43,7 +43,7 @@ const Home: NextPage = () => {
             target="_blank"
             rel="noreferrer"
           >
-            dowiedz sie wiecej
+            Dowiedz sie wiecej
           </a>
 
           <Link
