@@ -11,14 +11,12 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        {/* Nagłówek strony */}
         <title>Naprawiacz twarzy</title>
       </Head>
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-28 mt-20">
-        {/* Link do udostępnionego tweetu */}
         <a
-          href=""
+          href="https://twitter.com/nutlope/status/1626074563481051136"
           target="_blank"
           rel="noreferrer"
           className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out"
@@ -29,7 +27,7 @@ const Home: NextPage = () => {
           Naprawianie twarzy{" "}
           <span className="relative whitespace-nowrap text-[#3290EE]">
             <SquigglyLines />
-            <span className="relative">za pomocą AI</span>
+            <span className="relative">za pomoca AI</span>
           </span>{" "}
           nawet dla ładnych osób.
         </h1>
@@ -39,17 +37,15 @@ const Home: NextPage = () => {
           Bez żadnych kosztów - przywróć swoje zdjęcia sprzed lat już dzisiaj.
         </p>
         <div className="flex justify-center space-x-4">
-          {/* Link do dowiedzenia się więcej */}
           <a
             className="bg-white rounded-xl text-black font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-gray-100 border"
             href="bednarski.ch"
             target="_blank"
             rel="noreferrer"
           >
-            dowiedz się więcej
+            dowiedz sie wiecej
           </a>
 
-          {/* Link do naprawy zdjęć */}
           <Link
             className="bg-black rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-black/80"
             href="/restore"
@@ -62,7 +58,6 @@ const Home: NextPage = () => {
             <div className="flex sm:space-x-2 sm:flex-row flex-col">
               <div>
                 <h2 className="mb-1 font-medium text-lg">Zdjęcie oryginalne</h2>
-                {/* Wyświetlanie oryginalnego zdjęcia */}
                 <Image
                   alt="Original photo of my bro"
                   src="/michael.jpg"
@@ -73,7 +68,6 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <h2 className="mb-1 font-medium text-lg">Naprawione zdjęcie</h2>
-                {/* Wyświetlanie naprawionego zdjęcia */}
                 <Image
                   alt="Restored photo of my bro"
                   width={400}
@@ -86,7 +80,6 @@ const Home: NextPage = () => {
           </div>
         </div>
       </main>
-      {/* Sekcja z referencjami */}
       <Testimonials />
       <Footer />
     </div>
