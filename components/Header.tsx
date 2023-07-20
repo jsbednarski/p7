@@ -12,7 +12,7 @@ export default function Header({ photo }: { photo?: string | undefined }) {
           width={25}
           height={25}
         />
-        <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
+        <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight text-gold">
           naprawiacztwarzy.ai
         </h1>
       </Link>
@@ -39,6 +39,11 @@ export default function Header({ photo }: { photo?: string | undefined }) {
           />
         </a>
       )}
+      <style jsx>{`
+        .text-gold {
+          color: gold;
+        }
+      `}</style>
     </header>
   );
 }
