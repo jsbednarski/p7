@@ -10,17 +10,17 @@ class MyDocument extends Document {
             name="description"
             content="Popraw jakość swoich zdjęć za darmo"
           />
-          <meta property="og:site_name" content="restorePhotos.io" />
+          <meta property="og:site_name" content="Pixelperfect" />
           <meta
             property="og:description"
             content="Popraw jakość swoich zdjęć za darmo."
           />
-          <meta property="og:title" content="Odtwórz zdjęcia twarzy" />
+          <meta property="og:title" content="Popraw jakość swoich zdjęć" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Odtwórz zdjęcia twarzy" />
+          <meta name="twitter:title" content="Popraw jakość swoich zdjęć" />
           <meta
             name="twitter:description"
-            content="Odtwórz swoje stare zdjęcia i zachowaj wspomnienia."
+            content="Popraw jakość swoich zdjęć za darmo."
           />
           <meta
             property="og:image"
