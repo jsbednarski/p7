@@ -25,28 +25,28 @@ const uploader = Uploader({
 });
 
 const Home: NextPage = () => {
-  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null); // Przechowuje URL oryginalnego zdjęcia
-  const [restoredImage, setRestoredImage] = useState<string | null>(null); // Przechowuje URL odtworzonego zdjęcia
-  const [loading, setLoading] = useState<boolean>(false); // Flaga wskazująca, czy trwa ładowanie
-  const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false); // Flaga wskazująca, czy odtworzone zdjęcie zostało załadowane
-  const [sideBySide, setSideBySide] = useState<boolean>(false); // Flaga wskazująca, czy wyświetlać zdjęcia obok siebie
-  const [error, setError] = useState<string | null>(null); // Przechowuje informację o błędzie
-  const [photoName, setPhotoName] = useState<string | null>(null); // Przechowuje nazwę zdjęcia
+  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
+  const [restoredImage, setRestoredImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
+  const [sideBySide, setSideBySide] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json()); // Funkcja do pobierania danych z serwera
-  const { data, mutate } = useSWR("/api/remaining", fetcher); // Hook SWR do pobierania danych z serwera
-  const { data: session, status } = useSession(); // Hook Next Auth do zarządzania sesją użytkownika
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, mutate } = useSWR("/api/remaining", fetcher);
+  const { data: session, status } = useSession();
 
   const options = {
-    maxFileCount: 1, // Maksymalna liczba plików do przesłania
-    mimeTypes: ["image/jpeg", "image/png", "image/jpg"], // Dozwolone typy plików
-    editor: { images: { crop: false } }, // Konfiguracja edytora
-    styles: { colors: { primary: "#000" } }, // Stylizacja komponentu
+    maxFileCount: 1,
+    mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
+    editor: { images: { crop: false } },
+    styles: { colors: { primary: "#000" } },
     onValidate: async (file: File): Promise<undefined | string> => {
       let isSafe = false;
       try {
-        isSafe = await NSFWPredictor.isSafeImg(file); // Sprawdzenie, czy obraz jest bezpieczny
-        if (!isSafe) va.track("Zablokowano obraz NSFW"); // Śledzenie zablokowania obrazu NSFW
+        isSafe = await NSFWPredictor.isSafeImg(file);
+        if (!isSafe) va.track("Zablokowano obraz NSFW");
       } catch (error) {
         console.error("Predyktor NSFW zgłosił błąd", error);
       }
@@ -66,9 +66,9 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
-          setPhotoName(file[0].originalFile.originalFileName); // Ustawienie nazwy zdjęcia
-          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail")); // Ustawienie URL oryginalnego zdjęcia
-          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail")); // Generowanie odtworzonego zdjęcia
+          setPhotoName(file[0].originalFile.originalFileName);
+          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
       }}
       width="670px"
@@ -77,7 +77,7 @@ const Home: NextPage = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Opóźnienie symulujące proces generacji zdjęcia
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
 
     const res = await fetch("/api/generate", {
@@ -90,10 +90,10 @@ const Home: NextPage = () => {
 
     let newPhoto = await res.json();
     if (res.status !== 200) {
-      setError(newPhoto); // Ustawienie błędu
+      setError(newPhoto);
     } else {
       mutate();
-      setRestoredImage(newPhoto); // Ustawienie URL odtworzonego zdjęcia
+      setRestoredImage(newPhoto);
     }
     setLoading(false);
   }
@@ -129,3 +129,145 @@ const Home: NextPage = () => {
             <span className="font-semibold">
               {data.hours} godzin i {data.minutes} minut.
             </span>
+          </p>
+        )}
+        <div className="flex justify-between items-center w-full flex-col mt-4">
+          <Toggle
+            className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
+            sideBySide={sideBySide}
+            setSideBySide={(newVal) => setSideBySide(newVal)}
+          />
+          {restoredLoaded && sideBySide && (
+            <CompareSlider
+              original={originalPhoto!}
+              restored={restoredImage!}
+            />
+          )}
+          {status === "loading" ? (
+            <div className="max-w-[670px] h-[250px] flex justify-center items-center">
+              <Rings
+                height="100"
+                width="100"
+                color="black"
+                radius="6"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="rings-loading"
+              />
+            </div>
+          ) : status === "authenticated" && !originalPhoto ? (
+            <UploadDropZone />
+          ) : (
+            !originalPhoto && (
+              <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
+                <div className="max-w-xl text-gray-600">
+                  Zaloguj się poniżej za pomocą konta Google, aby założyć darmowe konto i odtworzyć swoje zdjęcia już dziś. Będziesz mógł bezpłatnie odtworzyć 5 zdjęć dziennie.
+                </div>
+                <button
+                  onClick={() => signIn("google")}
+                  className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
+                >
+                  <Image
+                    src="/google.png"
+                    width={20}
+                    height={20}
+                    alt="logo Google"
+                  />
+                  <span>Zaloguj się za pomocą konta Google</span>
+                </button>
+              </div>
+            )
+          )}
+          {originalPhoto && !restoredImage && (
+            <Image
+              alt="oryginalne zdjęcie"
+              src={originalPhoto}
+              className="rounded-2xl"
+              width={475}
+              height={475}
+            />
+          )}
+          {restoredImage && originalPhoto && !sideBySide && (
+            <div className="flex sm:space-x-4 sm:flex-row flex-col">
+              <div>
+                <h2 className="mb-1 font-medium text-lg">Oryginalne zdjęcie</h2>
+                <Image
+                  alt="oryginalne zdjęcie"
+                  src={originalPhoto}
+                  className="rounded-2xl relative"
+                  width={475}
+                  height={475}
+                />
+              </div>
+              <div className="sm:mt-0 mt-8">
+                <h2 className="mb-1 font-medium text-lg">Odtworzone zdjęcie</h2>
+                <a href={restoredImage} target="_blank" rel="noreferrer">
+                  <Image
+                    alt="odtworzone zdjęcie"
+                    src={restoredImage}
+                    className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in"
+                    width={475}
+                    height={475}
+                    onLoadingComplete={() => setRestoredLoaded(true)}
+                  />
+                </a>
+              </div>
+            </div>
+          )}
+          {loading && (
+            <button
+              disabled
+              className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+            >
+              <span className="pt-4">
+                <LoadingDots color="white" style="large" />
+              </span>
+            </button>
+          )}
+          {error && (
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8 max-w-[575px]"
+              role="alert"
+            >
+              <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                Spróbuj ponownie za 24 godziny
+              </div>
+              <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                {error}
+              </div>
+            </div>
+          )}
+          <div className="flex space-x-2 justify-center">
+            {originalPhoto && !loading && (
+              <button
+                onClick={() => {
+                  setOriginalPhoto(null);
+                  setRestoredImage(null);
+                  setRestoredLoaded(false);
+                  setError(null);
+                }}
+                className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
+              >
+                Prześlij nowe zdjęcie
+              </button>
+            )}
+            {restoredLoaded && (
+              <button
+                onClick={() => {
+                  downloadPhoto(restoredImage!, appendNewToName(photoName!));
+                }}
+                className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+              >
+                Pobierz odtworzone zdjęcie
+              </button>
+            )}
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;
