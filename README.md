@@ -1,6 +1,6 @@
-# Projekt odtwarzania zdjęć
+# Projekt poprawy zdjęć twarzy
 
-Projekt umożliwia odtwarzanie zdjęć twarzy przy użyciu technologii deep learning. Użytkownik może przesłać swoje zdjęcie, a następnie otrzymać odtworzoną wersję tego zdjęcia.
+Projekt umożliwia poprawianie zdjęć twarzy przy użyciu technologii deep learning. Użytkownik może przesłać swoje zdjęcie, a następnie otrzymać odtworzoną wersję tego zdjęcia.
 
 ## Wymagania
 
