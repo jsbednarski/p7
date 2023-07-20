@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           Naprawianie twarzy{" "}
           <span className="relative whitespace-nowrap text-[#3290EE]">
             <SquigglyLines />
-            <span className="relative">za pomoca AI</span>
+            <span className="relative text-gold">za pomoca AI</span>
           </span>{" "}
           nawet dla ładnych osób.
         </h1>
@@ -82,6 +82,11 @@ const Home: NextPage = () => {
       </main>
       <Testimonials />
       <Footer />
+      <style jsx>{`
+        .text-gold {
+          color: gold;
+        }
+      `}</style>
     </div>
   );
 };
