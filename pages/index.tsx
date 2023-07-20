@@ -33,8 +33,8 @@ const Home: NextPage = () => {
         </h1>
 
         <p className="mx-auto mt-12 max-w-xl text-lg text-slate-700 leading-7">
-          Czy masz starą, rozmytą fotografię twarzy? Pozwól naszej zaawansowanej sztucznej inteligencji przywrócić te wspomnienia i ożywić je na nowo. 
-          Bez żadnych kosztów - przywróć swoje zdjęcia sprzed lat już dzisiaj.
+          Czy posiadasz starą, rozmazaną fotografię twarzy? Pozwól naszej zaawansowanej sztucznej inteligencji podnieść jakość tych wspomnień i przywrócić im nowe życie.
+Bez żadnych opłat - odzyskaj swoje zdjęcia sprzed lat już dzisiaj.
         </p>
         <div className="flex justify-center space-x-4">
           <a
